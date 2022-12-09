@@ -1,21 +1,18 @@
-{% extends 'base.html' %} 
-{% block header %}
+{% extends 'base.html' %}
+{% load cache %}
+{% block title %}
   Последние обновления на сайте
 {% endblock %}
 {% block content %}
-  {% for post in posts %}
-    <ul>
-      <li>
-        Автор: {{ post.author.get_full_name }}
-      </li>
-      <li>
-        Дата публикации: {{ post.pub_date|date:"d E Y" }}
-      </li>
-    </ul>
-    <p>{{ post.text }}</p>    
-      {% if post.group %}   
-        <a href="{% url 'posts:group_list' post.group.slug %}">все записи группы</a>
-      {% endif %} 
-    {% if not forloop.last %}<hr>{% endif %}
-  {% endfor %} 
+  {% with index=True %}
+    {% include 'posts/includes/switcher.html' %}
+  {% endwith %}
+  <h1>Последние обновления на сайте</h1>
+  {% cache 20 index_page page_obj %}
+    {% for post in page_obj %}
+      {% include 'posts/includes/post_article.html' %}
+      {% comment %} {% if not forloop.last %}<hr>{% endif %} {% endcomment %}
+    {% endfor %} 
+    {% include 'includes/paginator.html' %}
+  {% endcache %}
 {% endblock %}

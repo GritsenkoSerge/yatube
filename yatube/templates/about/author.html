@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Об авторе проекта{% endblock %}
+{% block content %}
+<h1 class="text-center">Привет, меня зовут Сергей!</h1>
+<p>
+  Тут я размещу информацию о себе, используя свои умения верстать.
+  Картинки, блоки, элементы бутстрап. А может быть, просто напишу несколько абзацев текста.
+  <br>
+  Но это не точно)
+  <br>
+  <img src="{% static 'img/serge_meme.png' %}" width="353" class="d-block mx-sm-auto" alt="">
+</p>
+{% endblock %}

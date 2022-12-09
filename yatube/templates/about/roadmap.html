@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Дорожная карта проекта{% endblock %}
+{% block content %}
+<h1 class="text-center">Дорожная карта проекта</h1>
+<div class="row">
+    <div class="col-sm-4">
+        <h4 class="text-center">Бэклог</h4>
+        <div class="card my-2">
+            <div class="card-body">
+                <h5 class="card-title">Регистрация пользователя</h5>
+                <div class="card-text">
+                    Сделать регистрацию пользователя с подтверждением учетной записи через email.
+                </div>
+            </div>
+        </div>
+        <div class="card my-2">
+            <div class="card-body">
+                <h5 class="card-title">Сброс пароля</h5>
+                <div class="card-text">
+                    Сделать сброс пароля пользователя через email.
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <h4 class="text-center">В работе</h4>
+        <div class="card my-2">
+            <div class="card-body">
+                <h5 class="card-title"></h5>
+                <div class="card-text">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <h4 class="text-center">Сделано</h4>
+        <div class="card my-2">
+            <div class="card-body">
+                <h5 class="card-title">Аватар пользователя</h5>
+                <div class="card-text">
+                    Реализовать возможность добавления аватарки для пользователя.
+                </div>
+            </div>
+        </div>
+        <div class="card my-2">
+            <div class="card-body">
+                <h5 class="card-title">Отображение картинок</h5>
+                <div class="card-text">
+                    Сделать масштабирование thumbnail по вертикали, а не по горизонтали (центру).
+                </div>
+            </div>
+        </div>
+        <div class="card my-2">
+            <div class="card-body">
+                <h5 class="card-title">Статика и медиа в деплое</h5>
+                <div class="card-text">
+                    Донастроить все чтобы /static/ и /media/ были доступны.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

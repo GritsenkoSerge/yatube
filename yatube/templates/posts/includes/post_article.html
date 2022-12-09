@@ -1,0 +1,48 @@
+<div class="card mb-3 p-2">
+  {% load thumbnail %}
+  <ul class="p-4">
+    {% if not is_profile %}
+    <li>
+      <div class="card-text">
+        {% thumbnail post.author.image "32x32" crop="center" as im_a %}
+          <img src="{{ im_a.url }}"
+          width="{{ im_a.width }}" height="{{ im_a.height }}">
+        {% endthumbnail %}
+          Автор: 
+          <a href="{% url 'posts:profile' post.author.username %}">
+            {{ post.author.get_name }}
+          </a>
+      </div>
+    </li>
+    {% endif %} 
+    {% if post.group and not is_group_list %}
+      <li>
+        <div class="card-text">
+          Группа: 
+          <a href="{% url 'posts:group_list' post.group.slug %}">
+            {{ post.group.title }}
+          </a>
+        </div>
+      </li>
+    {% endif %}
+    <li>
+      <div class="card-text">
+        Дата публикации: {{ post.created|date:"d E Y" }}
+      </div>
+    </li>
+  </ul>
+  {% thumbnail post.image "x300" crop="center" upscale=True as im %}
+    <img class="card-img my-2" src="{{ im.url }}">
+  {% endthumbnail %}
+  <div class="card-title">{{ post.text|truncatechars:150|linebreaksbr }}</div>
+  <div>
+    <a href="{% url 'posts:post_detail' post.id %}">Детали публикации</a>
+    {% if post.comments_count > 0 %}
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-left-text" viewBox="0 0 16 16">
+          <path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+          <path d="M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
+        </svg>
+        {{ post.comments_count }}
+    {% endif %}
+  </div>
+</div>
