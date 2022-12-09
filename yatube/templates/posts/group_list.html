@@ -1,0 +1,35 @@
+{% extends 'base.html' %} 
+{% load static %}
+{% block header %}
+<!-- Использованы классы бустрапа для создания типовой навигации с логотипом -->
+<!-- В дальнейшем тут будет создано полноценное меню -->    
+<nav class="navbar navbar-light" style="background-color: lightskyblue">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">
+      <img src="{% static 'img/logo.png' %}" width="30" height="30" class="d-inline-block align-top" alt="">
+      <!-- тег span используется для добавления нужных стилей отдельным участкам текста -->
+      <span style="color:red">Ya</span>tube</a>
+    </a>
+  </div>
+</nav>      
+{% endblock %}
+{% block content %}
+<div class="container">
+  <h1>Лев Толстой – зеркало русской революции.</h1>
+  <p>{{ group.title }}</p>
+  {% for post in posts %}
+  <article>
+    <ul>
+      <li>
+        Автор: {{ post.author.get_full_name }}
+      </li>
+      <li>
+        Дата публикации: {{ post.pub_date|date:"d E Y" }}
+      </li>
+    </ul>
+    <p>{{ post.text }}</p>
+  </article>
+  {% if not forloop.last %}<hr>{% endif %}
+  {% endfor %} 
+</div>  
+{% endblock %}
