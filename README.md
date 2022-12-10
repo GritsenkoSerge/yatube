@@ -23,7 +23,6 @@
 * pytils 0.3
 * sorl-thumbnail 12.7.0
 * requests 2.26.0
-* gunicorn 20.0.4
 * psycopg2-binary 2.8.6
 * python-dotenv 0.21.0
 ## Установка
