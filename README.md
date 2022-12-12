@@ -25,6 +25,7 @@
 * requests 2.26.0
 * psycopg2-binary 2.8.6
 * python-dotenv 0.21.0
+* gunicorn 20.0.4
 ## Установка
 * Клонировать проект
 ```

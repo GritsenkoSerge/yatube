@@ -9,6 +9,7 @@ pytils==0.3
 python-dotenv==0.21.0
 requests==2.26.0
 sorl-thumbnail==12.7.0
+gunicorn==20.0.4
 pytest==6.2.4
 pytest-django==4.4.0
 pytest-pythonpath==0.7.3
